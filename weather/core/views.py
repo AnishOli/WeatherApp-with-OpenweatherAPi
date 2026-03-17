@@ -9,9 +9,11 @@ def index(request):
     else:
         city="kathmandu"
     API_KEY = config("WEATHER_API_KEY")
+    UNSPLASH_API_KEY = config("UNSPLASH_API_KEY")
+    
     url=f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric'
     data=requests.get(url).json()
-    img_url=f'https://api.unsplash.com/search/photos?query={city}&per_page=1&client_id=AocYclv8-7zt1nkxHU7cN4ZMEXoOoNvgBwIvjMYUufI'
+    img_url=f'https://api.unsplash.com/search/photos?query={city}&per_page=1&client_id={UNSPLASH_API_KEY}'
     response=requests.get(img_url).json()
   
     try:
